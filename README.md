@@ -1,5 +1,5 @@
-# mupet
-Mice Ultrasonic Profile ExTractor
+## MUPET - Mice Ultrasonic Profile ExTractor
 
-The MUPET manual can be found here: 
+The MUPET manual can be found here:  
+
 https://github.com/mvansegbroeck/mupet/wiki/MUPET-wiki
