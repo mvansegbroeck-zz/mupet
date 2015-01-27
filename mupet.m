@@ -450,9 +450,14 @@ set(handles.selected_repertoire_B,'string','');
 
 function compare_A_against_all_repertoires_Callback(hObject, eventdata, handles)
 repertoire_A=get(handles.selected_repertoire_A,'string');
+repertoire_items=get(handles.repertoire_list,'string');
 if isempty(repertoire_A)
     errordlg('Please select base repertoire A.','Select repertoire');
 else
-    repertoire_items=get(handles.repertoire_list,'string');
-    compare_A_against_all_repertoires(handles,repertoire_items,repertoire_A);
+    if length(repertoire_items)<2
+       errordlg('Please create more than one repertoire first.','Create more repertoires');
+    else
+       repertoire_items=get(handles.repertoire_list,'string');
+       compare_A_against_all_repertoires(handles,repertoire_items,repertoire_A);
+    end
 end
