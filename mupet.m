@@ -101,31 +101,31 @@ function process_file_Callback(hObject, eventdata, handles)
 wav_items=get(handles.wav_list,'string');
 selected_wav=get(handles.wav_list,'value');
 wav_dir=get(handles.wav_directory,'string');
-if ~isempty(selected_wav)
+if ~isempty(wav_dir)
     compute_musv(wav_dir,wav_items(selected_wav),handles);
     [syllables, fs] = syllable_activity_file_stats(wav_dir, wav_items{selected_wav});
-end
-handles.syllables = syllables;
-handles.sample_frequency = fs;
-handles.filename = wav_items{selected_wav};
-if length(syllables) >= 1
-    set(handles.syllable_slider,'Value',0);
-    set(handles.syllable_slider,'Max',length(syllables)-2);
-    set(handles.syllable_slider,'Min',0);
-    set(handles.syllable_slider,'SliderStep',[1/(double(length(syllables)-1)) 0.01]);
-    syllable_ndx=1;
-    
-    % make syllable patch
-    show_syllables(handles,syllable_ndx);
-    
-    % update handles
-    guidata(hObject, handles);
+    handles.syllables = syllables;
+    handles.sample_frequency = fs;
+    handles.filename = wav_items{selected_wav};
+    if length(syllables) >= 1
+        set(handles.syllable_slider,'Value',0);
+        set(handles.syllable_slider,'Max',length(syllables)-2);
+        set(handles.syllable_slider,'Min',0);
+        set(handles.syllable_slider,'SliderStep',[1/(double(length(syllables)-1)) 0.01]);
+        syllable_ndx=1;
+
+        % make syllable patch
+        show_syllables(handles,syllable_ndx);
+
+        % update handles
+        guidata(hObject, handles);
+    end
 end
 
 function process_all_Callback(hObject, eventdata, handles)
 wav_items=get(handles.wav_list,'string');
 wav_dir=get(handles.wav_directory,'string');
-if ~isempty(strfind(wav_items{1},'.wav'))||~isempty(strfind(wav_items{1},'.WAV'))
+if ~isempty(wav_dir)
     compute_musv(wav_dir,wav_items,handles);
 end
 
@@ -133,13 +133,11 @@ function file_report_Callback(hObject, eventdata, handles)
 wav_items=get(handles.wav_list,'string');
 selected_wav=get(handles.wav_list,'value');
 wav_dir=get(handles.wav_directory,'string');
-if ~isempty(selected_wav)
+if ~isempty(wav_dir)
     compute_musv(wav_dir,wav_items(selected_wav),handles);
     syllables = syllable_activity_file_stats(wav_dir, wav_items{selected_wav});
     show_file_stats(wav_items{selected_wav},syllables);
 end
-  
-
 
 %%% SYLLABLE INSPECTOR
 
@@ -200,7 +198,7 @@ end
 function print_content_Callback(hObject, eventdata, handles)
 dataset_items=get(handles.dataset_list,'string');
 selected_dataset=get(handles.dataset_list,'value');
-if ~isempty(selected_dataset)
+if ~isempty(dataset_items)
     load(fullfile(handles.datasetdir,sprintf('%s.mat',dataset_items{selected_dataset})),'dataset_content','dataset_dir');
     fprintf('\nContent of dataset "%s"\n',sprintf('%s.mat',dataset_items{selected_dataset}));
     fprintf('directory:   %s\n',dataset_dir);
@@ -227,7 +225,7 @@ set(handles.dataset_list,'string',strrep({datasetNames.name},'.mat',''));
 function delete_dataset_Callback(hObject, eventdata, handles)
 dataset_items=get(handles.dataset_list,'string');
 selected_dataset=get(handles.dataset_list,'value');
-if ~isempty(selected_dataset)
+if ~isempty(dataset_items)
     delete(fullfile(handles.datasetdir,sprintf('%s.mat',dataset_items{selected_dataset})));
     datasetNames=dir(fullfile(handles.datasetdir,'*.mat'));
     set(handles.dataset_list,'value',selected_dataset-1);
@@ -373,7 +371,7 @@ set(handles.selected_repertoire_B,'string','');
 function delete_repertoire_Callback(hObject, eventdata, handles)
 repertoire_items=get(handles.repertoire_list,'string');
 selected_repertoire=get(handles.repertoire_list,'value');
-if ~isempty(selected_repertoire)
+if ~isempty(repertoire_items)
     delete(fullfile(handles.basedir,repertoire_items{selected_repertoire}));
     ndx_delete=strcmp(repertoire_items,repertoire_items{selected_repertoire});
     repertoire_items(ndx_delete)=[];
