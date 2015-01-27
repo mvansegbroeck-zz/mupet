@@ -135,10 +135,11 @@ selected_wav=get(handles.wav_list,'value');
 wav_dir=get(handles.wav_directory,'string');
 if ~isempty(selected_wav)
     compute_musv(wav_dir,wav_items(selected_wav),handles);
-    [~, syllable_dur, syllable_distance, syllable_activity, ...
-        syllable_count_per_minute, syllable_count_per_second] = ...
-        syllable_activity_file_stats(wav_dir, wav_items{selected_wav});
+    syllables = syllable_activity_file_stats(wav_dir, wav_items{selected_wav});
+    show_file_stats(wav_items{selected_wav},syllables);
 end
+  
+
 
 %%% SYLLABLE INSPECTOR
 
