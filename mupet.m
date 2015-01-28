@@ -53,6 +53,8 @@ handles.syllables='';
 handles.sample_frequency=0;
 handles.filename='';
 handles.patch_window=120;
+makeurl(handles.wiki,'https://github.com/mvansegbroeck/mupet/wiki/MUPET-wiki');
+makeurl(handles.code,'https://github.com/mvansegbroeck/mupet/');
 defaultFigPos=get(0,'DefaultFigurePosition');
 set(0,'DefaultFigurePosition',[1 defaultFigPos(2) defaultFigPos(3) defaultFigPos(4)]);
 [handles.FontSize1, handles.FontSize2, handles.FontSize3]=setGuiFonts(handles);
