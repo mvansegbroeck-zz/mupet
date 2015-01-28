@@ -81,7 +81,7 @@ handles.datadir = uigetdir;
 filelist1=dir(fullfile(handles.datadir,'*.WAV'));
 filelist2=dir(fullfile(handles.datadir,'*.wav'));
 if (length(filelist1)+length(filelist2)) > 0,
-    handles.flist={ filelist1.name filelist2.name };
+    handles.flist=unique({ filelist1.name filelist2.name });
     content=handles.flist;
 else
     content=sprintf('No wave files found in directory\n');        
@@ -107,11 +107,21 @@ if ~isempty(wav_dir)
     handles.syllables = syllables;
     handles.sample_frequency = fs;
     handles.filename = wav_items{selected_wav};
-    if length(syllables) >= 1
+    nb_syllables=size(syllables,2);
+    if nb_syllables >= 1
         set(handles.syllable_slider,'Value',0);
-        set(handles.syllable_slider,'Max',length(syllables)-2);
-        set(handles.syllable_slider,'Min',0);
-        set(handles.syllable_slider,'SliderStep',[1/(double(length(syllables)-1)) 0.01]);
+        if nb_syllables==1            
+            set(handles.syllable_slider,'Visible','off');
+        else
+            set(handles.syllable_slider,'Visible','on');
+            if nb_syllables==2
+                set(handles.syllable_slider,'Max',1);
+            else
+                set(handles.syllable_slider,'Max',nb_syllables-2);
+            end
+            set(handles.syllable_slider,'Min',0);
+            set(handles.syllable_slider,'SliderStep',[1/(double(nb_syllables-1)) 0.01]);
+        end
         syllable_ndx=1;
 
         % make syllable patch
@@ -119,6 +129,8 @@ if ~isempty(wav_dir)
 
         % update handles
         guidata(hObject, handles);
+    else
+        errordlg('No syllables were selected in this file.', 'No syllables');
     end
 end
 
@@ -145,7 +157,7 @@ function syllable_slider_Callback(hObject, eventdata, handles)
 if isempty(handles.syllables)
     errordlg('Please select and process an audio file.','No audio file selected/processed')
 else
-    syllable_ndx = round(get(handles.syllable_slider,'Value')./(get(handles.syllable_slider,'Max')) * (length(handles.syllables)-1) + 1);    
+    syllable_ndx = round(get(handles.syllable_slider,'Value')./(get(handles.syllable_slider,'Max')) * (size(handles.syllables,2)-1) + 1);
     % make syllable patch
     show_syllables(handles,syllable_ndx);        
 end
@@ -228,7 +240,7 @@ selected_dataset=get(handles.dataset_list,'value');
 if ~isempty(dataset_items)
     delete(fullfile(handles.datasetdir,sprintf('%s.mat',dataset_items{selected_dataset})));
     datasetNames=dir(fullfile(handles.datasetdir,'*.mat'));
-    set(handles.dataset_list,'value',selected_dataset-1);
+    set(handles.dataset_list,'value',1);
     set(handles.dataset_list,'string',strrep({datasetNames.name},'.mat',''));
 end
 
@@ -325,6 +337,7 @@ else
         errordlg('Requested repertoire exist. Delete first for rebuild.','Repertoire exist');
     end
     base_content=dir(fullfile(handles.basedir,sprintf('*_N%i.mat',NbUnits)));
+    set(handles.repertoire_list,'value',1);
     set(handles.repertoire_list,'string',{base_content.name});
     categoriesel=cellfun(@num2str,mat2cell([5:5:length(base_content)*NbUnits]',ones(length(base_content)*NbUnits/5,1)),'un',0);
     if ~isempty(categoriesel)
@@ -340,6 +353,7 @@ categoriesel=cellfun(@num2str,mat2cell([5:5:length(base_content)*NbUnits]',ones(
 if ~isempty(categoriesel)
     set(handles.categories,'string',categoriesel);
 end
+set(handles.repertoire_list,'value',1);
 set(handles.repertoire_list,'string',{base_content.name});
 set(handles.selected_repertoire_A,'string','');
 set(handles.selected_repertoire_B,'string','');
@@ -382,7 +396,7 @@ if ~isempty(repertoire_items)
     if ~isempty(categoriesel)
         set(handles.categories,'string',categoriesel);
     end
-    set(handles.repertoire_list,'value',selected_repertoire-1);
+    set(handles.repertoire_list,'value',1);
     set(handles.repertoire_list,'string',repertoire_items);
 end
 set(handles.selected_repertoire_A,'string','');
