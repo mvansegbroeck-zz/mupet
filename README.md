@@ -13,7 +13,6 @@ Screen image of MUPET:
 ![Alt text](https://db.tt/O2M5GzEO "Mupet screen image")
 
 **Release info:**
-
 *current version*: Mupet v1.0 (date 27.1.2015)  
 *previous version*: --
 
