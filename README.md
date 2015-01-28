@@ -17,6 +17,6 @@ Screen image of MUPET:
 *current version*: Mupet v1.0 (date 27.1.2015)  
 *previous version*: --
 
-**Contact info:**
-Maarten Van Segbroeck
+**Contact info:**  
+Maarten Van Segbroeck  
 maarten@sipi.usc.edu
