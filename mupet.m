@@ -88,8 +88,12 @@ function opendir_Callback(hObject, eventdata, handles)
 handles.datadir = uigetdir;
 filelist1=dir(fullfile(handles.datadir,'*.WAV'));
 filelist2=dir(fullfile(handles.datadir,'*.wav'));
+crit = '^[^.]+';
+rxResult1 = regexp( {filelist1.name}, crit );
+rxResult2 = regexp( {filelist2.name}, crit );
 if (length(filelist1)+length(filelist2)) > 0,
     handles.flist=unique({ filelist1.name filelist2.name });
+    handles.flist([cellfun(@isempty,rxResult1)==true cellfun(@isempty,rxResult2)==true])=[];    
     content=handles.flist;
     [~,handles.audiodir]=fileparts(handles.datadir);
     handles.audiodir=fullfile('audio',handles.audiodir);
@@ -143,9 +147,21 @@ if ~isempty(wav_dir)
 
         % update handles
         guidata(hObject, handles);
-    else
-        errordlg('No syllables were selected in this file.', 'No syllables');
+    else        
+         errordlg(sprintf(' ***              No syllables found in file              *** '),'MUPET info');   
     end
+end
+
+function ignore_file_Callback(hObject, eventdata, handles)
+wav_items=get(handles.wav_list,'string');
+selected_wav=get(handles.wav_list,'value');
+if ~isempty(wav_items)
+    handles.flist(strcmp(handles.flist,wav_items{selected_wav}))=[];    
+    wav_items(selected_wav)=[];
+    set(handles.wav_list,'value',1);
+    set(handles.wav_list,'string',wav_items); 
+    % update handles
+    guidata(hObject, handles);
 end
 
 function process_all_Callback(hObject, eventdata, handles)
