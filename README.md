@@ -13,8 +13,8 @@ Screen image of MUPET:
 ![Alt text](https://db.tt/O2M5GzEO "Mupet screen image")
  
 **Release info:**  
-*current version*: Mupet-v1.2 (date 8.4.2015)  
-*previous version*: Mupet-v1.1 (date 30.3.2015)  
+*current version*: Mupet-v1.21 (date 24.4.2015)  
+*previous version*: Mupet-v1.2 (date 8.4.2015)  
  
 **Contact info:**  
 Maarten Van Segbroeck  
