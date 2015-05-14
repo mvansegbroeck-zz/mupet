@@ -42,6 +42,7 @@ handles.flist='';
 handles.datadir='';
 handles.repertoiredir='repertoires';
 handles.datasetdir='datasets';
+handles.denoising=false;
 addpath util;
 set(handles.nbunits,'Value',4);
 units=get(handles.nbunits,'String');
@@ -112,6 +113,23 @@ function wav_list_Callback(hObject, eventdata, handles)
 function wav_list_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
+end
+
+function noisereduction_Callback(hObject, eventdata, handles)
+button_state = get(hObject,'Value');
+if button_state == get(hObject,'Max')
+    set(hObject,'ForegroundColor',[0 .75 0.35]);
+    set(hObject,'String','denoise ON');
+    handles.denoising=true;
+    handles.origaudiodir=handles.audiodir;
+    handles.audiodir=sprintf('%s_denoiseON',handles.audiodir);    
+    guidata(hObject, handles);
+elseif button_state == get(hObject,'Min')
+    set(hObject,'ForegroundColor',[0 0 0]);    
+    set(hObject,'String','denoise OFF');
+    handles.denoising=false;    
+    handles.audiodir=handles.origaudiodir;
+    guidata(hObject, handles);
 end
 
 function process_file_Callback(hObject, eventdata, handles)
