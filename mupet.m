@@ -65,6 +65,7 @@ set(0,'DefaultFigurePosition',[1 defaultFigPos(2) defaultFigPos(3) defaultFigPos
 set(handles.syllable_slider,'Visible','off');
 set(handles.syllable_axes_fft,'Visible','off');
 set(handles.syllable_axes_gt,'Visible','off');
+set(handles.noisereduction,'Visible','off');
 
 % Update handles structure
 guidata(hObject, handles);
