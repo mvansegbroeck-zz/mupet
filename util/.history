@@ -1,0 +1,442 @@
+#+1409242014
+m
+#+1409251250
+hpc
+#+1409256030
+hpc
+#+1409623878
+m
+#+1409625637
+ls /saildisk/mca/MediaEval2014/MER/
+#+1409625645
+less /saildisk/mca/MediaEval2014/MER/dev_set_files.txt
+#+1409625657
+less /saildisk/mca/MediaEval2014/MER/annot/
+#+1409625664
+less /saildisk/mca/MediaEval2014/MER/annot/static_annotations.csv
+#+1409626981
+hpc
+#+1409626990
+ls /saildisk/maarten/
+#+1409626999
+ls /saildisk/maarten/MediaEval2014/
+#+1409627000
+ls /saildisk/maarten/MediaEval2014/MER/
+#+1409627002
+ls /saildisk/maarten/MediaEval2014/MER/dev_set_ltsv/
+#+1409627003
+ls /saildisk/maarten/MediaEval2014/MER/dev_set_ltsv/
+#+1409627010
+load /saildisk/maarten/MediaEval2014/MER/dev_set_ltsv/1000.mat
+#+1409627011
+m
+#+1409682887
+cd work/MediaEval2014/
+#+1409682887
+ls
+#+1409682890
+m0
+#+1409683318
+sudo \rm -rf /saildisk/mca/MediaEval2014/MER/dev_set_ltsv/
+#+1409763183
+cd
+#+1410298606
+hpc
+#+1410769885
+m
+#+1411432135
+m0
+#+1411538052
+m0
+#+1411764529
+m0
+#+1411765272
+exit
+#+1411765620
+top
+#+1411765645
+top
+#+1411765933
+top
+#+1412017773
+ls
+#+1412017779
+\rm matlab_crash_dump.*
+#+1412017780
+ls
+#+1412017784
+exit
+#+1412022705
+exit
+#+1412196752
+rsync -varu vansegbr@hpc.usc.edu:/auto/dr-lc_pg/rats/maarten/CNN/tmp.mat .
+#+1412196756
+m
+#+1412197169
+hpc
+#+1412379040
+exit
+#+1413409691
+100*12
+#+1413409693
+m0
+#+1414799793
+top
+#+1415311077
+m0
+#+1415684810
+exit
+#+1415731463
+exit
+#+1415736740
+exit
+#+1416435724
+ext
+#+1416435726
+exit
+#+1417740988
+ls /saildisk/maarten/avec/feats_ext/ | wc
+#+1417741022
+ls /saildisk/maarten/avec/feats_ext/
+#+1417741367
+ls /saildisk/maarten/avec/feats_ext/
+#+1417741376
+tio
+#+1417741378
+top
+#+1417741396
+ls /saildisk/
+#+1417741398
+ls /saildisk/maarten/
+#+1417741404
+du -sh /saildisk/maarten/MediaEval2014/
+#+1417748683
+top
+#+1417748703
+\rm /saildisk/maarten/avec/feats_ext/ -rf
+#+1417748922
+\rm /saildisk/maarten/avec/feats_ext/ -rf
+#+1417749725
+\rm /saildisk/maarten/avec/feats_ext/ -rf
+#+1417749767
+\rm /saildisk/maarten/avec/feats_ext/ -rf
+#+1417749782
+\rm /saildisk/maarten/avec/feats_ext/ -rf
+#+1417749829
+ls /saildisk/maarten/avec/feats_ext/
+#+1417749830
+ls /saildisk/maarten/avec/feats_ext/
+#+1417749836
+ls /saildisk/maarten/avec/feats_ext/ | wc
+#+1417749841
+ls /saildisk/maarten/avec/feats_ext/ | wc
+#+1417749842
+ls /saildisk/maarten/avec/feats_ext/
+#+1417749847
+ls /saildisk/maarten/avec/feats_ext/
+#+1417749855
+ls /saildisk/maarten/avec/feats_ext/
+#+1417749857
+ls /saildisk/maarten/avec/feats_ext/
+#+1417749865
+ls /saildisk/maarten/avec/feats_ext/ | wc
+#+1417749866
+ls /saildisk/maarten/avec/feats_ext/ | wc
+#+1417749872
+ls /saildisk/maarten/avec/feats_ext/ | wc
+#+1417749873
+ls /saildisk/maarten/avec/feats_ext/ | wc
+#+1417749874
+ls /saildisk/maarten/avec/feats_ext/ | wc
+#+1417749876
+ls /saildisk/maarten/avec/feats_ext/
+#+1417749884
+ls /saildisk/maarten/avec/feats_ext/
+#+1417749886
+ls /saildisk/maarten/avec/feats_ext/ | wc
+#+1417749892
+ls /saildisk/maarten/avec/feats_ext/ | wc
+#+1417749893
+ls /saildisk/maarten/avec/feats_ext/ | wc
+#+1417749938
+ls /saildisk/maarten/avec/feats_ext/ | wc
+#+1417749939
+ls /saildisk/maarten/avec/feats_ext/ | wc
+#+1417749940
+ls /saildisk/maarten/avec/feats_ext/ | wc
+#+1417749950
+ls /saildisk/maarten/avec/feats_ext/ | wc
+#+1417749965
+ls /saildisk/maarten/avec/feats_ext/*cp11*
+#+1417749967
+ls /saildisk/maarten/avec/feats_ext/*cp11.*
+#+1417750023
+ls /saildisk/maarten/avec/feats_ext/*cp11.*
+#+1417750070
+\rm /saildisk/maarten/avec/feats_ext/ -rf
+#+1417800657
+ls
+#+1417800670
+vi /sailusb0/maarten/avec/tmp
+#+1418083497
+hpc
+#+1418768561
+exit
+#+1418778033
+top
+#+1418778067
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/
+#+1418778070
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/
+#+1418778072
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ -lrt
+#+1418778089
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.fusionpca.train.* -lrt
+#+1418782361
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.fusionpca.train.* -lrt
+#+1418782768
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.fusionpca.train.* -lrt
+#+1418782792
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.fusionpca.train.*/UBM_32 -lrt
+#+1418783012
+ls /saildisk/rats/LID/F/
+#+1418783015
+ls /saildisk/rats/LID/F/features/
+#+1418783021
+ls /saildisk/rats/LID/F/
+#+1418783026
+ls /saildisk/rats/LID/F/data/
+#+1418783053
+less /saildisk/rats/LID/F/modeling/modeling/ubm_models/feature_list/train_3sec_mcc2.list
+#+1418783097
+ls /sailusb0/rats/LID/F/feats/
+#+1418783164
+ls /sailusb0/rats/LID/F/
+#+1418783167
+ls /sailusb0/rats/LID/F/feat
+#+1418783177
+du -sh /sailusb0/rats/LID/F/feat/vad_filtered_wav8k_new
+#+1418783284
+\rm -rf /sailusb0/rats/LID/F/feat
+#+1418783306
+bg
+#+1418783323
+ls
+#+1418783325
+hpc
+#+1418783344
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.fusionpca.train.*/UBM_32 -lrt
+#+1418783360
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.fusionpca.train.*/UBM_32 -lrt
+#+1418783373
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.fusionpca.train.*/UBM_* -lrt
+#+1418783417
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.fusionpca.train.*/UBM_* -lrt
+#+1418783537
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.fusionpca.train.*/UBM_* -lrt
+#+1418783997
+ls
+#+1418784004
+\rm -rf /sailusb0/rats/LID/F/feat &
+#+1418784022
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.fusionpca.train.*/UBM_* -lrt
+#+1418784308
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.fusionpca.train.*/UBM_* -lrt
+#+1418784492
+\rm -rf /sailusb0/rats/LID/F/feat &
+#+1418784497
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.fusionpca.train.*/UBM_* -lrt
+#+1418784502
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.fusionpca.train.*/UBM_* -lrt
+#+1418784821
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.fusionpca.train.*/UBM_* -lrt
+#+1418785153
+3
+#+1418785155
+jobs
+#+1418785158
+kill %1 %2 %3
+#+1418785162
+jobs
+#+1418785164
+kill %1 %2 %3
+#+1418785166
+kill %1 %2 %3 -9
+#+1418785167
+kill %1 %2 %3
+#+1418785169
+kill %1 %2 %3
+#+1418785170
+top
+#+1418785173
+ls
+#+1418785176
+kill %1 %2 %3
+#+1418785177
+jobs
+#+1418785183
+kill -9 %1
+#+1418785184
+kill -9 %2
+#+1418785186
+kill -9 %3
+#+1418785189
+jobs
+#+1418785191
+kill -9 %3
+#+1418785195
+jobs
+#+1418785211
+jobs
+#+1418785212
+jobs
+#+1418785213
+jobs
+#+1418785333
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.fusionpca.train.*/UBM_* -lrt
+#+1418785599
+top
+#+1418785603
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.fusionpca.train.*/UBM_* -lrt
+#+1418785609
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.mcc2.train.*/UBM_* -lrt
+#+1418785645
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.*
+#+1418785858
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.*
+#+1418785859
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.*
+#+1418785861
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.*
+#+1418785863
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.*/*
+#+1418785865
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.*/*
+#+1418785867
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.*
+#+1418785871
+top
+#+1418790637
+cd /saildisk/rats/LID/F/modeling/modeling/oldubm
+#+1418871868
+top
+#+1418871872
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.*
+#+1418871887
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.*/UBM_128
+#+1418871889
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.*/UBM_128 -lrt
+#+1418872106
+hpc
+#+1418926801
+top
+#+1418930989
+exit
+#+1418972028
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.*/UBM_* -lrt
+#+1419009801
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.*/UBM_* -lrt
+#+1419054750
+ls /saildisk/rats/LID/F/modeling/modeling/ubm_models/models/ubm2048.3s.*/UBM_* -lrt
+#+1419054755
+top
+#+1420748081
+m0
+#+1420824819
+exit
+#+1421173411
+ls /saildisk/
+#+1421173413
+exit
+#+1421888018
+ls
+#+1421888019
+exit
+#+1421949818
+which m
+#+1421950192
+hpc
+#+1421955045
+hpc
+#+1422157154
+cd work/RATS/SAD/
+#+1422157155
+ls
+#+1422157159
+cd ../scripts/
+#+1422157159
+ls
+#+1422157169
+vi E_train_dbn_dnn_noctx_featcomb.m
+#+1422157231
+ls
+#+1422157232
+vi E_train_dbn_dnn_noctx_featcomb.m
+#+1422157250
+m
+#+1422157272
+vi E_train_dbn_dnn_noctx_featcomb.m
+#+1422157292
+m0
+#+1422157865
+firefox
+#+1422158021
+bg
+#+1422158021
+ls
+#+1422158024
+cd
+#+1422158024
+ls
+#+1422158029
+ll Downloads/
+#+1422158033
+ll Downloads/ -lrt
+#+1422158085
+exit
+#+1422160088
+m0
+#+1422160304
+vi ~/matlab/DeepLearnToolbox/NN/nntrain.m
+#+1422160317
+vi ~/matlab/DeepLearnToolbox/NN/nnbp.m
+#+1422160354
+vi ~/matlab/DeepLearnToolbox/NN/nnff.m
+#+1422160389
+vi ~/matlab/DeepLearnToolbox/NN/nnbp.m
+#+1422160470
+vi ~/matlab/DeepLearnToolbox/NN/nntrain.m
+#+1422160479
+vi ~/matlab/DeepLearnToolbox/NN/nnbp.m
+#+1422160751
+vi ~/matlab/DeepLearnToolbox/NN/nnapplygrads.m
+#+1422161213
+vi ~/matlab/DeepLearnToolbox/DBN-DNN/nntrain.m
+#+1422162625
+vi work/RATS/scripts/E_train_dbn_dnn_ctx.m
+#+1422166894
+vi ~/matlab/DeepLearnToolbox/NN/nnff.m
+#+1422296180
+cd work/USV/Neuron/
+#+1422296181
+ls
+#+1422296241
+cd mupet
+#+1422296242
+ls
+#+1422296246
+cd util
+#+1422296247
+s
+#+1422296248
+ls
+#+1422296273
+vi syllable_activity_stats.m
+#+1422296316
+vi FE_GT_spectra.m
+#+1422296335
+vi compute_musv.m
+#+1422296416
+vi FE_GT_spectra.m
+#+1422296469
+vi compute_musv.m
