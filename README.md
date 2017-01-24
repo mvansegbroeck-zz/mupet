@@ -14,5 +14,5 @@ Screen image of MUPET:
 
 **Release info:**
 
-*current version*: Mupet v1.3 (date 6.16.2015)  
-*previous version*: Mupet v1.2 (date 5.24.2015) 
+*current version*: Mupet v2.0 (date 1.24.2017)  
+*previous version*: Mupet v1.3 (date 6.16.2015)  
