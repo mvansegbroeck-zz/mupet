@@ -12,8 +12,6 @@ Screen image of MUPET:
 
 ![Alt text](https://drive.google.com/file/d/0BxYa7ak0w3lvb3ZZY2tKYjJMcDg/view?usp=sharing "Mupet screen image")
 
-![myimage-alt-tag](https://drive.google.com/file/d/0BxYa7ak0w3lvb3ZZY2tKYjJMcDg/view?usp=sharing)
-
 **Release info:**
 
 *current version*:  
