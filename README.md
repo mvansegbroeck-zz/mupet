@@ -30,10 +30,10 @@ MUPET outputs for repertoire comparison:
 #### Release info: 
 
 *current version*:  
-Mupet v2.0 (date 5.08.2017)  
+Mupet v2.0 (date 05.08.2017)  
 
 *previous versions*:  
-Mupet v1.5 (date 4.30.2016)  
-Mupet v1.4 (date 2.25.2016)  
-Mupet v1.3 (date 6.16.2015)  
+Mupet v1.5 (date 04.30.2016)  
+Mupet v1.4 (date 02.25.2016)  
+Mupet v1.3 (date 06.16.2015)  
 Mupet v1.2 (date 5.24.2015)  
