@@ -41,5 +41,5 @@ Mupet v1.2 (date 5.24.2015)
 #### Author contact details:
 
 Maarten Van Segbroeck  
-University of Southern California, Los Angeles, CA  
-mvansegbroeck@gmail.com  
+*University of Southern California, Los Angeles, CA*  
+*mvansegbroeck@gmail.com*  
