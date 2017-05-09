@@ -12,6 +12,15 @@ Screen image of MUPET:
 
 ![Alt text](http://mvansegb.webfactional.com/figures/v2.0/mupet.PNG "Mupet screen image")
 
+Repertoire example:
+
+![Alt text](http://mvansegb.webfactional.com/figures/v2.0/repertoire.PNG "Mupet screen image")
+
+Repertoire comparison example:
+
+![Alt text](http://mvansegb.webfactional.com/figures/v2.0/repertoire_comparison.PNG "Mupet screen image")
+
+
 **Release info:**
 
 *current version*:  
