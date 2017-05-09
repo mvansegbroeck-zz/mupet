@@ -6,11 +6,15 @@ It offers researchers the possibility to rapidly analyze audio recordings in ter
 
 MUPET also supports the export of the generated data to CSV files to facilitate additional statistical analysis by researchers.
 
+#### Wiki page
+
 The MUPET wiki page can be found here:
 
 https://github.com/mvansegbroeck/mupet/wiki/MUPET-wiki
 
-Screen image of MUPET:
+#### Screen images of MUPET:
+
+MUPET user interface
 
 ![Alt text](http://mvansegb.webfactional.com/figures/v2.0/mupet.PNG "Mupet screen image")
 
@@ -23,7 +27,7 @@ MUPET outputs for repertoire comparison:
 ![Alt text](http://mvansegb.webfactional.com/figures/v2.0/repertoire_comparison.PNG "Mupet screen image")
 
 
-**Release info:**
+#### Release info: 
 
 *current version*:  
 Mupet v2.0 (date 7.19.2016)  
