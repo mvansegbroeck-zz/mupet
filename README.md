@@ -2,7 +2,9 @@
 
 MUPET is a Matlab-based tool to analyze the ultrasonic calls emitted by mice (or rodents in general).
 
-It offers researchers the possibility to rapidly analyze audio recordings in terms of acoustics, spectral information and syllable statistics. It also allows building syllable repertoires, analyzing syllable category counts, and comparing repertoires between multiple recording studies.
+It offers researchers the possibility to rapidly analyze audio recordings in terms of acoustics, spectral information and syllable statistics. It also allows building syllable repertoires, analyzing syllable category counts, and comparing repertoires between multiple recording studies. 
+
+MUPET also supports the export of the generated data to CSV files to facilitate further statistical analysis by researchers.
 
 The MUPET wiki page can be found here:
 
@@ -16,7 +18,7 @@ Repertoire example extracted by MUPET:
 
 ![Alt text](http://mvansegb.webfactional.com/figures/v2.0/repertoire.PNG "Mupet screen image")
 
-MUPET repertoire comparison example:
+MUPET outputs for repertoire comparison:
 
 ![Alt text](http://mvansegb.webfactional.com/figures/v2.0/repertoire_comparison.PNG "Mupet screen image")
 
