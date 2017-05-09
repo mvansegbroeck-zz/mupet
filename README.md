@@ -10,7 +10,7 @@ https://github.com/mvansegbroeck/mupet/wiki/MUPET-wiki
 
 Screen image of MUPET:
 
-![Alt text](http://mvansegb.webfactional.com/figures/mupet.png "Mupet screen image")
+![Alt text](http://mvansegb.webfactional.com/figures/v2.0/mupet.PNG "Mupet screen image")
 
 **Release info:**
 
