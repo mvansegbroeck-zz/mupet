@@ -12,11 +12,11 @@ Screen image of MUPET:
 
 ![Alt text](http://mvansegb.webfactional.com/figures/v2.0/mupet.PNG "Mupet screen image")
 
-Repertoire example:
+Repertoire example extracted by MUPET:
 
 ![Alt text](http://mvansegb.webfactional.com/figures/v2.0/repertoire.PNG "Mupet screen image")
 
-Repertoire comparison example:
+MUPET repertoire comparison example:
 
 ![Alt text](http://mvansegb.webfactional.com/figures/v2.0/repertoire_comparison.PNG "Mupet screen image")
 
