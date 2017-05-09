@@ -14,7 +14,7 @@ https://github.com/mvansegbroeck/mupet/wiki/MUPET-wiki
 
 #### Screen images of MUPET:
 
-MUPET user interface
+MUPET user interface:
 
 ![Alt text](http://mvansegb.webfactional.com/figures/v2.0/mupet.PNG "Mupet screen image")
 
