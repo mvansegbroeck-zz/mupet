@@ -37,3 +37,9 @@ Mupet v1.5 (date 04.30.2016)
 Mupet v1.4 (date 02.25.2016)  
 Mupet v1.3 (date 06.16.2015)  
 Mupet v1.2 (date 5.24.2015)  
+
+#### Author contact details:
+
+Maarten Van Segbroeck
+University of Southern California
+mvansegbroeck@gmail.com
