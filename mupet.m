@@ -293,7 +293,7 @@ function handles=mupet_initialize(handles)
     handles.psd_smoothing_window_freq=10;
 
     % repertoire learning
-    handles.repertoire_learning_min_nb_syllables_fac=5;
+    handles.repertoire_learning_min_nb_syllables_fac=1;
     handles.repertoire_unit_size_seconds=200;
     handles.patch_window=handles.repertoire_unit_size_seconds/handles.frame_shift_ms*1e-3; % ms divided by frameshift
 
