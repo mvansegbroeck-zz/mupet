@@ -72,8 +72,8 @@ end
 % default_configfile(handles);
 % end
 
-function wav_list_Callback(hObject, eventdata, handles)
-end
+% function wav_list_Callback(hObject, eventdata, handles)
+% end
 
 % function noisereduction_Callback(hObject, eventdata, handles)
 % handles=noise_reduction(hObject, handles);
