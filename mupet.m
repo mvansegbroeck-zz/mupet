@@ -112,15 +112,15 @@ end
 %%%
 %%% SYLLABLE INSPECTOR
 %%%
-function syllable_slider_Callback(hObject, eventdata, handles)
-move_syllable_slider(handles);
-end
+% function syllable_slider_Callback(hObject, eventdata, handles)
+% move_syllable_slider(handles);
+% end
 
-function syllable_slider_CreateFcn(hObject, eventdata, handles)
-if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor',[.9 .9 .9]);
-end
-end
+% function syllable_slider_CreateFcn(hObject, eventdata, handles)
+% if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+%     set(hObject,'BackgroundColor',[.9 .9 .9]);
+% end
+% end
 
 %%%
 %%% DATASETS
@@ -307,7 +307,7 @@ function handles=mupet_initialize(handles)
     defaultFigPos=get(0,'DefaultFigurePosition');
     set(0,'DefaultFigurePosition',[1 defaultFigPos(2) defaultFigPos(3) defaultFigPos(4)]);
     [handles.FontSize1, handles.FontSize2, handles.FontSize3, handles.FontSize4]=setGuiFonts(handles);
-    set(handles.syllable_slider,'Visible','off');
+    set(handles.syllableSlider,'Visible','off');
     set(handles.syllable_axes_fft,'Visible','off');
     set(handles.syllable_axes_gt,'Visible','off');
 %     set(handles.noisereduction,'Visible','off');
