@@ -129,26 +129,26 @@ end
 % create_dataset(handles);
 % end
 
-function print_content_Callback(hObject, eventdata, handles)
-print_content(handles);
-end
+% function print_content_Callback(hObject, eventdata, handles)
+% printContent(handles);
+% end
 
-function dataset_list_Callback(hObject, eventdata, handles)
-end
+% function dataset_list_Callback(hObject, eventdata, handles)
+% end
 
-function dataset_list_CreateFcn(hObject, eventdata, handles)
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-end
+% function datasetList_CreateFcn(hObject, eventdata, handles)
+% if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+%     set(hObject,'BackgroundColor','white');
+% end
+% end
 
-function refresh_datasets_Callback(hObject, eventdata, handles)
-refresh_datasets(handles);
-end
+% function refresh_datasets_Callback(hObject, eventdata, handles)
+% refreshDatasets(handles);
+% end
 
-function delete_dataset_Callback(hObject, eventdata, handles)
-delete_datasets(handles);
-end
+% function delete_dataset_Callback(hObject, eventdata, handles)
+% delete_datasets(handles);
+% end
 
 function dataset_name_Callback(hObject, eventdata, handles)
 end
@@ -319,7 +319,7 @@ function handles=mupet_initialize(handles)
     repertoire_content(end+1:end+length(repertoire_refined_content))=repertoire_refined_content;
     set(handles.repertoire_list,'string',{repertoire_content.name});
     datasetNames=dir(fullfile(handles.datasetdir,'*.mat'));
-    set(handles.dataset_list,'string',strrep({datasetNames.name},'.mat',''));
+    set(handles.datasetList,'string',strrep({datasetNames.name},'.mat',''));
 
     % title
     mupet_title='MUPET v2.0';
@@ -346,38 +346,6 @@ end
 %%%
 %%% UTILITY FUNCTIONS - DATASETS
 %%%
-
-% print_content
-function print_content(handles)
-
-    dataset_items=get(handles.dataset_list,'string');
-    if ~isempty(dataset_items)
-        export_csv_dataset_content(dataset_items, handles);
-    end
-    msgbox(sprintf('***              All data sets exported to CSV files              ***\n See folder %s/CSV',handles.datasetdir),'MUPET info');
-
-end
-
-% refresh_datasets
-function refresh_datasets(handles)
-
-    datasetNames=dir(fullfile(handles.datasetdir,'*.mat'));
-    set(handles.dataset_list,'string',strrep({datasetNames.name},'.mat',''));
-
-end
-
-% delete_datasets
-function delete_datasets(handles)
-
-    dataset_items=get(handles.dataset_list,'string');
-    selected_dataset=get(handles.dataset_list,'value');
-    if ~isempty(dataset_items)
-        delete(fullfile(handles.datasetdir,sprintf('%s.mat',dataset_items{selected_dataset})));
-        datasetNames=dir(fullfile(handles.datasetdir,'*.mat'));
-        set(handles.dataset_list,'value',1);
-        set(handles.dataset_list,'string',strrep({datasetNames.name},'.mat',''));
-    end
-end
 
 %%%
 %%% UTILITY FUNCTIONS - SYLLABLE INSPECTOR
@@ -1075,8 +1043,8 @@ end
 
 % build_repertoire
 function build_repertoire(handles)
-    dataset_items=get(handles.dataset_list,'string');
-    selected_dataset=get(handles.dataset_list,'value');
+    dataset_items=get(handles.datasetList,'string');
+    selected_dataset=get(handles.datasetList,'value');
     if isempty(dataset_items)
         errordlg('Please create a dataset first.','No dataset created');
     else
@@ -1366,131 +1334,6 @@ function [FontSize1, FontSize2, FontSize3, FontSize4]=setGuiFonts(handles)
         end
         fontDefault=1; % do not perform this step again.
     end
-end
-
-% syllable_activity_stats
-function syllable_activity_stats(handles, wavefile_list, dataset_filename, Nfft)
-
-    if ~exist('Nfft', 'var')
-        Nfft=512;
-    end
-    fs=250000;
-    frame_shift=floor(handles.frame_shift_ms*fs);
-
-    gtdir=fullfile(handles.audiodir);
-
-    % Accumulate GT sonogram frames
-    dataset_stats.syllable_dur=[];
-    dataset_stats.syllable_distance=[];
-    dataset_stats.syllable_activity=[];
-    dataset_stats.syllable_count_per_minute=[];
-    dataset_stats.syllable_count_per_second=[];
-    dataset_stats.file_length=[];
-    dataset_stats.filenames=[];
-    dataset_stats.length=0;
-    Xn_frames=0; Xn_tot=0;
-    nb_of_syllables=0;
-    dataset_content={};
-
-    for wavefileID = 1:length(wavefile_list)
-        [~, wavefile]= fileparts(wavefile_list{wavefileID});
-        syllable_file=fullfile(gtdir, sprintf('%s.mat', wavefile));
-        if exist(syllable_file,'file'),
-            % info
-            fprintf('Processing file %s', wavefile);
-            load(syllable_file,'syllable_data','filestats');
-            syllable_data(2,:)={[]};
-            dataset_content{end+1}=sprintf('%s.mat', wavefile);
-
-            if filestats.nb_of_syllables >=1
-
-                % accumulate syllable stats
-                dataset_stats.syllable_dur = [dataset_stats.syllable_dur filestats.syllable_dur];
-                dataset_stats.syllable_distance = [dataset_stats.syllable_distance filestats.syllable_distance];
-                dataset_stats.file_length = [dataset_stats.file_length; filestats.syllable_activity*filestats.TotNbFrames];
-                dataset_stats.syllable_count_per_minute = [dataset_stats.syllable_count_per_minute; filestats.syllable_count_per_minute ];
-                dataset_stats.syllable_count_per_second = [dataset_stats.syllable_count_per_second; filestats.syllable_count_per_second ];
-                dataset_stats.length = dataset_stats.length + filestats.TotNbFrames;
-                dataset_stats.filenames = [dataset_stats.filenames syllable_data(1,:)];
-
-                % accumulate psd
-                for syllableID = 1:filestats.nb_of_syllables
-                    E=cell2mat(syllable_data(4,syllableID));
-                    E(E==0)=1;
-                    sumXn=sum(cell2mat(syllable_data(3,syllableID))./(ones(Nfft,1)*E),2);
-                    Xn_tot = Xn_tot + sumXn;
-                    Xn_frames=Xn_frames+length(E);
-                end
-                nb_of_syllables=nb_of_syllables+filestats.nb_of_syllables;
-
-            end
-
-            fprintf('\n');
-        end
-        clear syllable_data filestats;
-
-    end
-
-    % PSD
-    psdn = Xn_tot / Xn_frames;
-
-    % syllable activity
-    dataset_stats.syllable_activity = sum(dataset_stats.file_length)/dataset_stats.length;
-    dataset_stats.nb_of_syllables = nb_of_syllables;
-    dataset_stats.recording_time = dataset_stats.length*frame_shift/fs;
-    dataset_stats.syllable_time = Xn_frames*frame_shift/fs;
-
-    % save to data set file
-    dataset_dir=handles.audiodir;
-    save(dataset_filename,'dataset_content','dataset_dir','-v6');
-    save(dataset_filename,'dataset_stats','-append','-v6');
-    save(dataset_filename,'psdn','fs','-append','-v6');
-
-end
-
-% export_csv_dataset_content
-function export_csv_dataset_content(dataset_items, handles)
-
-    csvdir=fullfile(handles.datasetdir,'CSV');
-    if ~exist(csvdir)
-      mkdir(csvdir)
-    end
-
-    % csv header
-    csv_header=sprintf('%s,%s,%s\n', ...
-        'data set', ...
-        'file path', ...
-        'file name');
-
-    csvfile=fullfile(csvdir, sprintf('datasets_file_content.csv'));
-    fid = fopen(csvfile,'wt');
-    fwrite(fid, csv_header);
-
-    for dataset_ndx = 1:length(dataset_items)
-        datasetname=dataset_items{dataset_ndx};
-        load(fullfile(handles.datasetdir,sprintf('%s.mat',datasetname)),'dataset_content','dataset_dir');
-
-        fprintf('\nContent of dataset "%s"\n',sprintf('%s.mat',dataset_items{dataset_ndx}));
-        fprintf('directory:   %s\n',dataset_dir);
-        for k=1:length(dataset_content)
-            % command window
-            if k==1
-                fprintf('files:       %s\n',dataset_content{k});
-            else
-                fprintf('             %s\n',dataset_content{k});
-            end
-            % print syllable information
-            dataset_info=sprintf('%s,%s,%s\n', ...
-                datasetname, ...
-                dataset_dir, ...
-                dataset_content{k});
-            fwrite(fid, dataset_info);
-        end
-
-    end
-
-    fclose(fid);
-
 end
 
 % repertoire_learning

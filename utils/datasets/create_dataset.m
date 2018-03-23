@@ -28,8 +28,8 @@ function create_dataset(handles)
             dataset_matfile = fullfile(handles.datasetdir,sprintf('%s.mat',datasetName));
             syllable_activity_stats(handles, wav_items, dataset_matfile);
             datasetNames=dir(fullfile(handles.datasetdir,'*.mat'));
-            set(handles.dataset_list,'value',1);
-            set(handles.dataset_list,'string',strrep({datasetNames.name},'.mat',''));
+            set(handles.datasetList,'value',1);
+            set(handles.datasetList,'string',strrep({datasetNames.name},'.mat',''));
             fprintf('Done.\n');
         end
     end
