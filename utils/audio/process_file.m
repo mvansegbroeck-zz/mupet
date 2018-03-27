@@ -1,7 +1,7 @@
 % processAudioFile
 function handles=process_file(handles)
-    wav_items=get(handles.wav_list,'string');
-    selected_wav=get(handles.wav_list,'value');
+    wav_items=get(handles.wavList,'string');
+    selected_wav=get(handles.wavList,'value');
     wav_dir=get(handles.wav_directory,'string');
     if ~isempty(wav_dir)
         [syllable_data, syllable_stats, filestats, fs]=compute_musv(wav_dir,wav_items(selected_wav),handles);

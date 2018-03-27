@@ -20,7 +20,7 @@ function handles=load_wavfiles(handles)
         content=sprintf('No wave files found in directory\n');
     end
     set(handles.wav_directory,'string',handles.datadir);
-    set(handles.wav_list,'value',1);
-    set(handles.wav_list,'string',content);
+    set(handles.wavList,'value',1);
+    set(handles.wavList,'string',content);
 
 end

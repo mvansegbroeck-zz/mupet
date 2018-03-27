@@ -5,7 +5,7 @@ function create_dataset(handles)
     if isempty(wav_dir)
         errordlg('Please select an audio directory first.','No data directory name');
     else
-        datasetName=get(handles.dataset_name,'String');
+        datasetName=get(handles.datasetName,'String');
         if isempty(datasetName)
             errordlg('Please give a name for the dataset.','No dataset name');
             choice='No';
@@ -23,7 +23,7 @@ function create_dataset(handles)
             if ~exist(handles.datasetdir,'dir')
                 mkdir(handles.datasetdir);
             end
-            wav_items=get(handles.wav_list,'string');
+            wav_items=get(handles.wavList,'string');
             fprintf('Creating data set: %s\n', datasetName);
             dataset_matfile = fullfile(handles.datasetdir,sprintf('%s.mat',datasetName));
             syllable_activity_stats(handles, wav_items, dataset_matfile);
