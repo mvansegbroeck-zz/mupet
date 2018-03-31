@@ -10,5 +10,5 @@ function refresh_repertoires(handles)
         set(handles.categories,'string',categoriesel);
     end
     set(handles.repertoireList,'string',sort({repertoire_content.name}));
-    set(handles.selected_repertoire_A,'string','');
+    set(handles.selectedRepertoireA,'string','');
 end

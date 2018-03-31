@@ -16,5 +16,5 @@ function delete_repertoires(handles)
         set(handles.repertoireList,'value',1);
         set(handles.repertoireList,'string',repertoire_items);
     end
-    set(handles.selected_repertoire_A,'string','');
+    set(handles.selectedRepertoireA,'string','');
 end

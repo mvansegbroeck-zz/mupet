@@ -233,40 +233,40 @@ end
 %%% REPERTOIRE PROFILE
 %%%
 
-function show_repertoire_Callback(hObject, eventdata, handles)
-show_repertoire(handles);
-end
+% function show_repertoire_Callback(hObject, eventdata, handles)
+% showRepertoire(handles);
+% end
 
-function refine_repertoire_Callback(hObject, eventdata, handles)
-refine_repertoire(handles);
-end
+% function refine_repertoire_Callback(hObject, eventdata, handles)
+% refineRepertoire(handles);
+% end
 
-function categories_Callback(hObject, eventdata, handles)
-end
+% function categories_Callback(hObject, eventdata, handles)
+% end
 
-function categories_CreateFcn(hObject, eventdata, handles)
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-end
+% function categories_CreateFcn(hObject, eventdata, handles)
+% if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+%     set(hObject,'BackgroundColor','white');
+% end
+% end
 
-function syllable_category_counts_Callback(hObject, eventdata, handles)
-syllable_category_counts(handles);
-end
+% function syllable_category_counts_Callback(hObject, eventdata, handles)
+% syllableCategoryCounts(handles);
+% end
 
 % REPERTOIRE COMPARISON
 
-function select_repertoire_A_Callback(hObject, eventdata, handles)
-select_repertoire(handles);
-end
+% function select_repertoire_A_Callback(hObject, eventdata, handles)
+% select_repertoire(handles);
+% end
 
-function compare_A_against_all_repertoires_match_Callback(hObject, eventdata, handles)
-compare_A_against_all_repertoires_match(handles);
-end
+% function compare_A_against_all_repertoires_match_Callback(hObject, eventdata, handles)
+% compareAAgainstAllRepertoiresMatch(handles);
+% end
 
-function compare_A_against_all_repertoires_activity_Callback(hObject, eventdata, handles)
-compare_A_against_all_repertoires_activity(handles)
-end
+% function compare_A_against_all_repertoires_activity_Callback(hObject, eventdata, handles)
+% compareAAgainstAllRepertoiresActivity(handles)
+% end
 
 %%%
 %%% UTILITY FUNCTIONS - MUPET INITIALIZATION
@@ -391,7 +391,7 @@ function set_nbUnits(handles)
     end
     set(handles.repertoireList,'value',1);
     set(handles.repertoireList,'string',{repertoire_content.name});
-    set(handles.selected_repertoire_A,'string','');
+    set(handles.selectedRepertoireA,'string','');
 end
 
 % refreshRepertoires
@@ -406,7 +406,7 @@ function refresh_repertoires(handles)
         set(handles.categories,'string',categoriesel);
     end
     set(handles.repertoireList,'string',sort({repertoire_content.name}));
-    set(handles.selected_repertoire_A,'string','');
+    set(handles.selectedRepertoireA,'string','');
 end
 
 % delete_repertoires
@@ -427,7 +427,7 @@ function delete_repertoires(handles)
         set(handles.repertoireList,'value',1);
         set(handles.repertoireList,'string',repertoire_items);
     end
-    set(handles.selected_repertoire_A,'string','');
+    set(handles.selectedRepertoireA,'string','');
 end
 
 % exportRepertoires
@@ -448,89 +448,16 @@ end
 %%% UTILITY FUNCTIONS - REPERTOIRE COMPARISON
 %%%
 
-% select_repertoire
-function select_repertoire(handles)
-    repertoire_items=get(handles.repertoireList,'string');
-    selected_repertoire=get(handles.repertoireList,'value');
-    if isempty(repertoire_items)
-        errordlg('Please create a repertoire first.','No repertoire created');
-    else
-        set(handles.selected_repertoire_A,'string',repertoire_items{selected_repertoire});
-    end
-end
-
-% compare_A_against_all_repertoires_match
-function compare_A_against_all_repertoires_match(handles)
-    repertoire_A=get(handles.selected_repertoire_A,'string');
-    repertoire_items=get(handles.repertoireList,'string');
-    if isempty(repertoire_A)
-        errordlg('Please select base repertoire A.','Select repertoire');
-    else
-        if length(repertoire_items)<2
-            errordlg('Please compare between multiple repertoires.','Create more repertoires');
-        else
-            compare_repertoires_match(handles,repertoire_items,repertoire_A);
-        end
-    end
-    set(handles.selected_repertoire_A,'string','');
-end
-
-% compare_A_against_all_repertoires_activity
-function compare_A_against_all_repertoires_activity(handles)
-    repertoire_A=get(handles.selected_repertoire_A,'string');
-    repertoire_items=get(handles.repertoireList,'string');
-    if isempty(repertoire_A)
-        errordlg('Please select base repertoire A.','Select repertoire');
-    else
-        if length(repertoire_items)<2
-           errordlg('Please compare between multiple repertoires.','Create more repertoires');
-        else
-           repertoire_items=get(handles.repertoireList,'string');
-           compare_repertoires_activity(handles,repertoire_items,repertoire_A);
-        end
-    end
-    set(handles.selected_repertoire_A,'string','');
-end
 
 %%%
 %%% UTILITY FUNCTIONS - REPERTOIRE PROFILE
 %%%
 
-% show_repertoire
-function show_repertoire(handles)
-    repertoire_items=get(handles.repertoireList,'string');
-    selected_repertoire=get(handles.repertoireList,'value');
-    if isempty(repertoire_items)
-        errordlg('Please create a repertoire first.','No repertoire created');
-    else
-        show_repertoire_figures(handles,repertoire_items{selected_repertoire});
-    end
-end
 
-% refine_repertoire
-function refine_repertoire(handles)
-    repertoire_items=get(handles.repertoireList,'string');
-    selected_repertoire=get(handles.repertoireList,'value');
-    if isempty(repertoire_items)
-        errordlg('Please create a repertoire first.','No repertoire created');
-    else
-        refine_selected_repertoire(handles,repertoire_items{selected_repertoire});
-    end
-    refresh_datasets(handles);
-    refresh_repertoires(handles);
-end
 
-% syllable_category_counts
-function syllable_category_counts(handles)
-    repertoire_items=get(handles.repertoireList,'string');
-    categories=get(handles.categories,'String');
-    NbCategories=str2double(categories(get(handles.categories,'Value')));
-    if isempty(repertoire_items)
-        errordlg('Please create a repertoire first.','No repertoire created');
-    else
-        show_syllable_category_counts(handles,repertoire_items,NbCategories);
-    end
-end
+
+
+
 
 %%%
 %%% UTILITY FUNCTION - LEVEL DOWN
@@ -713,276 +640,6 @@ function show_repertoire_figures(handles,repertoireName)
 
 end
 
-% refine_selected_repertoire
-function refine_selected_repertoire(handles,repertoireName)
-
-    repertoiredir=handles.repertoiredir;
-    repertoire_filename=fullfile(repertoiredir,repertoireName);
-    refined_repertoire_filename=strrep(repertoire_filename,'.mat','+.mat');
-
-    NbIterRefine=10;
-
-    choice='Yes';
-    if exist(refined_repertoire_filename,'file') || ~isempty(strfind(repertoire_filename,'+.mat'));
-    %     qstring='Repertoire was already refined. This operation will overwrite the existing repertoire. Would you like to continue refining?';
-    %     choice=questdlg(qstring, 'Further repertoire refinement','Yes','No','No');
-        qstring='Repertoire was already refined.';
-        errordlg(qstring, 'Repertoire refined stopped');
-        choice='No';
-    end
-
-    load(repertoire_filename,'datasetName');
-    datasetNameRefine=fullfile(handles.datasetdir, sprintf('%s+.mat',datasetName));
-    if exist(datasetNameRefine,'file')
-        qstring='Dataset was already refined through a different repertoire.';
-        qstring=sprintf('Dataset %s already exists. Probably refined through a different repertoire.', sprintf('%s+',datasetName)) ;
-        errordlg(qstring, 'Multiple dataset refinements conflict');
-        choice='No';
-    end
-
-    switch choice
-        case 'No'
-            return;
-        case 'Yes'
-            % load
-            load(repertoire_filename,'bases','activations','NbUnits','NbChannels','NbPatternFrames','NbIter','dataset_dir','ndx_V','datasetName');
-
-            x = inputdlg('Enter space-separated numbers:', sprintf('Units to be removed from repertoire %s:',strrep(repertoireName,'.mat','')),[1 80]);
-
-            if isempty(x)
-                return
-            elseif isempty(str2num(x{:}))
-                 errordlg('Invalid input.','Repertoire refinement stopped',[1 80]);
-            else
-                units = fix(str2num(x{:}));
-                units = unique(units);
-
-                if ~isempty(find(units > NbUnits | units <= 0, 1))
-                    errordlg('Invalid input.','Repertoire refinement stopped',[1 80]);
-                else
-
-                    % remove elements from repertoire
-                    remove_ndx_refine=vertcat(ndx_V{units});
-
-                    % compute initial centroid for refined repertoire learning
-                    bases_tmp=bases;
-                    bases_init=bases;
-                    bases_tmp(units)=[];
-                    bases_init(units)=bases_tmp(1:length(units));
-    %                 bases_init(units)=bases_tmp(end-length(units)+1:end);
-                    W_init=zeros(NbChannels*(NbPatternFrames+1),NbUnits);
-                    for k=1:NbUnits
-                        W_init(:,k)=reshape(bases_init{k},NbChannels*(NbPatternFrames+1),1);
-                    end
-                    W_init=W_init';
-
-                    % recompute repertoire
-                    [bases, activations, bic, logL, syllable_similarity, syllable_correlation, repertoire_similarity, err, NbChannels, NbPatternFrames, NbUnits, NbIter, ndx_V, datasetNameRefined,msg] = repertoire_learning(handles, datasetName, NbUnits, NbChannels, NbIterRefine, remove_ndx_refine, W_init);
-                    if isempty(bases)
-                        if isempty(msg)
-                            errordlg('Repertoire learning stopped. Too few syllables were detected in the audio data.','repertoire error');
-                        else
-                            errordlg(msg,'repertoire error');
-                        end
-                    else
-                        % save
-                        [~,datasetName]=fileparts(datasetNameRefined);
-                        save(refined_repertoire_filename,'bases','activations','bic','logL','syllable_similarity','syllable_correlation','repertoire_similarity','NbUnits','NbChannels','NbPatternFrames','NbIter','dataset_dir','remove_ndx_refine','ndx_V','datasetName','-v6');
-                        set(handles.repertoireList,'value',1);
-                        delete(repertoire_filename);
-                    end
-                end
-            end
-    end
-end
-
-% show_syllable_category_counts
-function show_syllable_category_counts(handles,repertoireNames,NbCategories)
-
-    guihandle=handles.output;
-
-    csvdir=fullfile(handles.repertoiredir,'CSV');
-    if ~exist(csvdir)
-      mkdir(csvdir)
-    end
-
-    % csv header
-    csv_header=sprintf('%s,%s,%s,%s,%s\n', ...
-        'repertoire unit (RU) cluster', ...
-        'number of RUs', ...
-        'RU-to-centroid correlation (mean)', ...
-        'RU-to-centroid correlation (std)', ...
-        'total number of syllables');
-
-    %figure
-    set(guihandle, 'HandleVisibility', 'off');
-    close all;
-    set(guihandle, 'HandleVisibility', 'on');
-    screenSize=get(0,'ScreenSize');
-    defaultFigPos=get(0,'DefaultFigurePosition');
-    basesunits=[];
-    basesactivations=cell(length(repertoireNames),1);
-    basesmap=cell(length(repertoireNames),1);
-
-    for repertoireID = 1:length(repertoireNames)
-
-        repertoire_filename = fullfile(handles.repertoiredir,repertoireNames{repertoireID});
-
-        if ~exist(repertoire_filename)
-            fprintf('Repertoire of data set does not exist. Build the repertoire.\n');
-        else
-            load(repertoire_filename,'bases','activations','NbUnits','NbChannels','NbPatternFrames');
-        end
-        basesmap{repertoireID}=[length(basesunits)+1:length(basesunits)+length(bases)];
-        basesunits=[basesunits; bases];
-        basesactivations{repertoireID}=activations;
-
-    end
-
-    %
-    figure('Position',[defaultFigPos(1) 0.90*screenSize(4)-defaultFigPos(4) defaultFigPos(3)*(1+fix(NbCategories/40)) defaultFigPos(4)]);
-    V=zeros(NbChannels*(NbPatternFrames+1), length(basesunits));
-    for k=1:length(basesunits)
-      V(:,k)=reshape(basesunits{k}, NbChannels*(NbPatternFrames+1), 1);
-    end
-
-    % meta clustering
-    [W,J]=kmedoids(V, NbCategories);
-
-    syllable_category_correlation=zeros(length(repertoireNames),2,NbCategories);
-    nb_of_repertoire_units=zeros(NbCategories,length(repertoireNames));
-    for repertoireID = 1:length(repertoireNames)
-
-        d_repertoire=V(:,basesmap{repertoireID});
-        J_repertoire=J(basesmap{repertoireID});
-        for categoryID=1:NbCategories
-            s = J_repertoire==categoryID;
-            nb_of_repertoire_units(categoryID,repertoireID) = sum(s);
-            if nb_of_repertoire_units(categoryID,repertoireID) == 0
-                syllable_category_correlation(repertoireID,1,categoryID) = 0;
-                syllable_category_correlation(repertoireID,2,categoryID) = 0;
-            else
-                measure_corr = corr(d_repertoire(:,s),W(:,categoryID));
-                syllable_category_correlation(repertoireID,1,categoryID) = mean(measure_corr);
-                syllable_category_correlation(repertoireID,2,categoryID) = std(measure_corr);
-            end
-        end
-    end
-
-    % prepare outputs
-    linebases=cell(NbCategories,1);
-    for kk=1:NbCategories
-        linebases{kk} = reshape(W(1:NbChannels*(NbPatternFrames+1),kk),NbChannels,(NbPatternFrames+1));
-    end
-
-    NbRows=5;
-    NbCols=floor(NbCategories/NbRows);
-    linebases_mat=zeros(NbChannels*NbRows,(NbPatternFrames+1)*NbCols);
-    for kk=1:NbRows
-      for ll=1:NbCols
-        base_unit_normalized = linebases{(NbRows-kk)*NbCols+ll}./max(max(linebases{(NbRows-kk)*NbCols+ll}));
-        linebases_mat((kk-1)*NbChannels+1:kk*NbChannels,(ll-1)*(NbPatternFrames+1)+1:ll*(NbPatternFrames+1))=base_unit_normalized;
-      end
-    end
-    imagesc(linebases_mat,[0 0.85]); axis xy; hold on;
-    for kk=1:NbCols-1
-      plot([(NbPatternFrames+1)*kk+1,(NbPatternFrames+1)*kk+1],[1 NbRows*NbChannels],'Color',[0.2 0.2 0.2],'LineWidth',1);
-    end
-    for kk=1:NbRows-1
-      plot([1 size(linebases_mat,2)],[kk*NbChannels+1 kk*NbChannels+1 ],'Color',[0.2 0.2 0.2],'LineWidth',1);
-    end
-    cnt=0;
-    for kk=NbRows-1:-1:0
-        for jj=0:NbCols-1
-            cnt=cnt+1;
-            text(floor(0.05*NbPatternFrames)+jj*(NbPatternFrames+1),(kk+1)*NbChannels-10,num2str(cnt),'Color','k','FontSize',handles.FontSize2,'fontweight','normal');
-        end
-    end
-    set(gcf, 'Color', 'w');
-    set(gca,'XTick',[]);
-    set(gca,'YTick',[]);
-    % ylabel('Gammatone channels','FontSize',handles.FontSize1);
-    colormap pink; colormap(flipud(colormap));
-    title(sprintf('Meta USV syllable repertoire'),'FontSize',handles.FontSize1,'fontweight','bold');
-    hold off;
-    set(gca, 'looseinset', get(gca, 'tightinset'));
-
-    % figure
-    xtickunits=2;
-    colormap_mupet=load_colormap;
-    activation_pie=zeros(NbCategories,length(repertoireNames));
-    nb_of_calls_pie=zeros(NbCategories,length(repertoireNames));
-    for repertoireID = 1:length(repertoireNames)
-
-        lineactivity=basesactivations{repertoireID};
-        Jline=J((repertoireID-1)*NbUnits+1:repertoireID*NbUnits);
-        lineactivity_mapped=Jline(lineactivity);
-        for k=1:NbCategories
-          activation_pie(k,repertoireID)=sum(lineactivity_mapped==k);
-        end
-        nb_of_calls_pie(:,repertoireID)=activation_pie(:,repertoireID);
-        activation_pie(:,repertoireID)=100*activation_pie(:,repertoireID)./sum(activation_pie(:,repertoireID));
-    end
-
-    for repertoireID = 1:length(repertoireNames)
-
-        figure('Position',[defaultFigPos(1)+(repertoireID)*25 0.90*screenSize(4)-defaultFigPos(4)-(repertoireID)*25 defaultFigPos(3) defaultFigPos(4)]);
-
-        % pie diagram
-        h=bar(nb_of_calls_pie(:,repertoireID)',1,'grouped');
-        bar_child=get(h,'Children');
-        colormap(colormap_mupet);
-        %set(bar_child,'CData',max(log(activation_pie(:,repertoireID)'),0));
-        set(bar_child,'CData',max(log(min(activation_pie(:,repertoireID),25)'),0));
-        set(gca,'XTick',[0:xtickunits:NbCategories]);
-        xlim([.5 NbCategories+.5]);
-        %ylim([0 40]);
-        set(gca,'XGrid','off','YGrid','on','XMinorGrid','off');
-        set(gca, 'Box', 'off', 'TickDir','out')
-        repertoireName=strtrim(regexprep(strrep(repertoireNames{repertoireID},'.mat',''),'[_([{}()=''.(),;:%{%}!@])]',' '));
-        title(sprintf('%s',strrep(repertoireName,'_',' ')),'FontSize',handles.FontSize1,'fontweight','bold');
-        set(gca, 'FontSize',handles.FontSize2);
-        set(gca, 'looseinset', get(gca, 'tightinset'));
-    %     ylabel('Activity counts (%%)','FontSize',handles.FontSize1);
-        ylabel('Number of syllables','FontSize',handles.FontSize1);
-        xlabel('Repertoire units (RUs)','FontSize',handles.FontSize1);
-        axis('square')
-
-        % CSV
-        csvfile=fullfile(csvdir, sprintf('%s_RU_cluster_counts_of_%i.csv',strrep(repertoireNames{repertoireID},'.mat',''),NbCategories));
-        fid = fopen(csvfile,'wt');
-        fwrite(fid, csv_header);
-        for categoryID = 1:NbCategories
-            % print category information
-            syl_cat_cor_mn = syllable_category_correlation(repertoireID,1,categoryID);
-            syl_cat_cor_st = syllable_category_correlation(repertoireID,2,categoryID);
-            if syl_cat_cor_mn == 0 && syl_cat_cor_st == 0
-                syl_cat_cor_mn_str = '-';
-                syl_cat_cor_st_str = '-';
-            elseif syl_cat_cor_st == 0;
-                if abs(syl_cat_cor_mn - 1 ) < 1e-10 % not exactly 1
-                    syl_cat_cor_mn_str = sprintf('%.0f',syl_cat_cor_mn);
-                else
-                    syl_cat_cor_mn_str = sprintf('%.4f',syl_cat_cor_mn);
-                end
-                syl_cat_cor_st_str = sprintf('%i',syl_cat_cor_st);
-            else
-                syl_cat_cor_mn_str = sprintf('%.4f',syl_cat_cor_mn);
-                syl_cat_cor_st_str = sprintf('%.4f',syl_cat_cor_st);
-            end
-
-            category_info=sprintf('%i,%i,%s,%s,%i\n', ...
-                categoryID, ...
-                nb_of_repertoire_units(categoryID,repertoireID), ...
-                syl_cat_cor_mn_str, ...
-                syl_cat_cor_st_str, ...
-                nb_of_calls_pie(categoryID,repertoireID));
-            fwrite(fid, category_info);
-        end
-        fclose(fid);
-    end
-end
-
 % kmedoids
 function [medoids, label, energy, index] = kmedoids(X,k)
 % X: d x n data matrix
@@ -1011,81 +668,8 @@ function [medoids, label, energy, index] = kmedoids(X,k)
     medoids = X(:,index);
 end
 
-% syllable_activity_stats_refine
-function [syllables, fs, syllable_dur, syllable_distance, syllable_activity, syllable_count_per_minute, syllable_count_per_second] = syllable_activity_stats_refine(handles, datasetName, Nfft)
 
-    if ~exist('Nfft', 'var')
-        Nfft=512;
-    end
-    fs=250000;
-    frame_shift=floor(handles.frame_shift_ms*fs);
-
-    % Accumulate GT sonogram frames
-    dataset_stats.syllable_dur=[];
-    dataset_stats.syllable_distance=[];
-    dataset_stats.syllable_activity=[];
-    dataset_stats.syllable_count_per_minute=[];
-    dataset_stats.syllable_count_per_second=[];
-    dataset_stats.file_length=[];
-    dataset_stats.filenames=[];
-    dataset_stats.length=0;
-    Xn_frames=0; Xn_tot=0;
-    nb_of_syllables=0;
-
-    % Gammatone features data
-    load(fullfile(handles.datasetdir,datasetName),'dataset_content','dataset_dir');
-    flist=dataset_content;
-
-    for fname = flist
-        [~, filename]= fileparts(fname{1});
-        syllable_file=fullfile(dataset_dir, sprintf('%s.mat', filename));
-        if exist(syllable_file,'file'),
-            load(syllable_file,'syllable_data','syllable_stats','filestats');
-            syllable_data(2,:)={[]};
-            syllable_use=cell2mat(syllable_stats(1,:));
-            syllable_data=syllable_data(:,syllable_use==1);
-
-            if filestats.nb_of_syllables >=1
-
-                % accumulate syllable stats
-                dataset_stats.syllable_dur = [dataset_stats.syllable_dur filestats.syllable_dur];
-                dataset_stats.syllable_distance = [dataset_stats.syllable_distance filestats.syllable_distance];
-                dataset_stats.file_length = [dataset_stats.file_length; filestats.syllable_activity*filestats.TotNbFrames];
-                dataset_stats.syllable_count_per_minute = [dataset_stats.syllable_count_per_minute; filestats.syllable_count_per_minute ];
-                dataset_stats.syllable_count_per_second = [dataset_stats.syllable_count_per_second; filestats.syllable_count_per_second ];
-                dataset_stats.length = dataset_stats.length + filestats.TotNbFrames;
-                dataset_stats.filenames = [dataset_stats.filenames syllable_data(1,:)];
-
-                % accumulate psd
-                for syllableID = 1:filestats.nb_of_syllables
-                    E=cell2mat(syllable_data(4,syllableID));
-                    E(E==0)=1;
-                    sumXn=sum(cell2mat(syllable_data(3,syllableID))./(ones(Nfft,1)*E),2);
-                    Xn_tot = Xn_tot + sumXn;
-                    Xn_frames=Xn_frames+length(E);
-                end
-                nb_of_syllables=nb_of_syllables+filestats.nb_of_syllables;
-
-            end
-        end
-        clear syllable_data filestats;
-    end
-
-    % PSD
-    psdn = Xn_tot / Xn_frames;
-
-    % syllable activity
-    dataset_stats.syllable_activity = sum(dataset_stats.file_length)/dataset_stats.length;
-    dataset_stats.nb_of_syllables = nb_of_syllables;
-    dataset_stats.recording_time = dataset_stats.length*frame_shift/fs;
-    dataset_stats.syllable_time = Xn_frames*frame_shift/fs;
-
-    % save to data set file
-    save(fullfile(handles.datasetdir,datasetName),'dataset_stats','psdn','-append','-v6');
-
-end
-
-% compare_A_against_all_repertoires_match
+% compareAAgainstAllRepertoiresMatch
 function compare_repertoires_match(handles,repertoireNames,repertoireA)
 
     guihandle=handles.output;
