@@ -4,6 +4,12 @@ function handles=select_workspace_dir(handles)
     handles.workspace_dir = uigetdir;
 %     set(handles.workspaceDir,fullfile(handles.workspace_dir))
     set(handles.workspaceDir,'string',fullfile(handles.workspace_dir));
+    handles.datasetdir = fullfile(handles.workspace_dir,'datasets');
+    refresh_datasets(handles);
+    handles.repertoiredir = fullfile(handles.workspace_dir,'repertoires');
+    refresh_repertoires(handles)
+    handles.configfile=fullfile(handles.workspace_dir,'config.csv');
+%     handles.audiodir = 
 %     filelist1=dir(fullfile(handles.datadir,'*.WAV'));
 %     filelist2=dir(fullfile(handles.datadir,'*.wav'));
 %     crit = '^[^.]+';

@@ -54,11 +54,12 @@ function handles=mupet_initialize(handles)
     addpath(genpath('./utils'))
     addpath(genpath('./gui_setup'))
     addpath(genpath('./core'))
-    handles.workspace_dir='';
+%     handles.workspace_dir='';
     handles.flist='';
     handles.datadir='';
     handles.repertoiredir='repertoires';
     handles.datasetdir='datasets';
+    handles.workspace_dir = pwd;
     handles.denoising=false;
 
     % feature extraction
@@ -109,7 +110,7 @@ function handles=mupet_initialize(handles)
     handles.configdefault{4}=-15; % min_syllable_total_energy_default
     handles.configdefault{5}=-25; % min_syllable_peak_amplitude_default
     handles.configdefault{6}=5; % min_syllable_distance_default
-    handles.configfile=fullfile(pwd,'config.csv');
+    handles.configfile=fullfile(handles.workspace_dir,'config.csv');
     handles = create_configfile(handles, true)
 
 end

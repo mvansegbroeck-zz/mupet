@@ -12,7 +12,7 @@ function handles=load_wavfiles(handles)
         handles.flist([cellfun(@isempty,rxResult1)==true cellfun(@isempty,rxResult2)==true])=[];
         content=handles.flist;
         [~,handles.audiodir]=fileparts(handles.datadir);
-        handles.audiodir=fullfile('audio',handles.audiodir);
+        handles.audiodir=fullfile(handles.workspace_dir,'audio',handles.audiodir);
         if ~exist(handles.audiodir,'dir')
            mkdir(handles.audiodir);
         end
