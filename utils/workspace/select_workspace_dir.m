@@ -2,7 +2,8 @@
 function handles=select_workspace_dir(handles)
 
     handles.workspace_dir = uigetdir;
-    handles.workspace_dir
+%     set(handles.workspaceDir,fullfile(handles.workspace_dir))
+    set(handles.workspaceDir,'string',fullfile(handles.workspace_dir));
 %     filelist1=dir(fullfile(handles.datadir,'*.WAV'));
 %     filelist2=dir(fullfile(handles.datadir,'*.wav'));
 %     crit = '^[^.]+';

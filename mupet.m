@@ -54,6 +54,7 @@ function handles=mupet_initialize(handles)
     addpath(genpath('./utils'))
     addpath(genpath('./gui_setup'))
     addpath(genpath('./core'))
+    handles.workspace_dir='';
     handles.flist='';
     handles.datadir='';
     handles.repertoiredir='repertoires';
@@ -123,4 +124,3 @@ end
 % hObject    handle to figure1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
-
