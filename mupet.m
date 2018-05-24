@@ -3,6 +3,9 @@
 % Author: Maarten Van Segbroeck
 % Mail: mvansegbroeck@gmail.com
 % Date: 08-22-2017
+% Author: Arshdeep Singh
+% Mail: arshdeep.dtu@gmail.com
+% Date: 05-24-2018
 % ------------------------------------------------------------------------
 
 function varargout = mupet(varargin)
