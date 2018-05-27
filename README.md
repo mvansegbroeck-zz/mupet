@@ -16,23 +16,24 @@ https://github.com/mvansegbroeck/mupet/wiki/MUPET-wiki
 
 MUPET user interface:
 
-![Alt text](http://mvansegb.webfactional.com/figures/v2.0/mupet.PNG "Mupet screen image")
+![Alt text](![](https://s3.amazonaws.com/mupet/figures/mupet.png) "Mupet screen image")
 
 Repertoire example extracted by MUPET:
 
-![Alt text](http://mvansegb.webfactional.com/figures/v2.0/repertoire.PNG "Mupet screen image")
+![Alt text](https://s3.amazonaws.com/mupet/figures/repertoire.png "Mupet screen image")
 
-MUPET outputs for repertoire comparison:
+MUPET workflow for repertoire comparison:
 
-![Alt text](http://mvansegb.webfactional.com/figures/v2.0/repertoire_comparison.PNG "Mupet screen image")
+![Alt text](https://s3.amazonaws.com/mupet/figures/repertoire_comparison.png "Mupet screen image")
 
 
 #### Release info: 
 
 *current version*:  
-Mupet v2.0 (date 05.08.2017)  
+Mupet v2.1 (date 05.27.2018)  
 
 *previous versions*:  
+Mupet v2.0 (date 05.08.2017)  
 Mupet v1.5 (date 04.30.2016)  
 Mupet v1.4 (date 02.25.2016)  
 Mupet v1.3 (date 06.16.2015)  
