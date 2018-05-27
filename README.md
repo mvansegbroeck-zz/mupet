@@ -6,6 +6,10 @@ It offers researchers the possibility to rapidly analyze audio recordings in ter
 
 MUPET also supports the export of the generated data to CSV files to facilitate additional statistical analysis by researchers.
 
+Publication:
+
+_Van Segbroeck, M., Knoll, A.T., Levitt, P. and Narayanan, S., 2017. MUPET—Mouse Ultrasonic Profile ExTraction: A Signal Processing Tool for Rapid and Unsupervised Analysis of Ultrasonic Vocalizations. Neuron, 94(3), pp.465-485._ https://www.sciencedirect.com/science/article/pii/S0896627317302982
+
 #### Wiki page
 
 The MUPET wiki page can be found here:
