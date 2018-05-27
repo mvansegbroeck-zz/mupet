@@ -16,7 +16,7 @@ https://github.com/mvansegbroeck/mupet/wiki/MUPET-wiki
 
 MUPET user interface:
 
-![Alt text](https://s3.amazonaws.com/mupet/figures/repertoire.png "Mupet screen image")
+![Alt text](https://s3.amazonaws.com/mupet/figures/mupet.png "Mupet screen image")
 
 Repertoire example extracted by MUPET:
 
