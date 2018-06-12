@@ -114,13 +114,16 @@ function handles=mupet_initialize(handles)
     handles.configdefault{5}=-25; % min_syllable_peak_amplitude_default
     handles.configdefault{6}=5; % min_syllable_distance_default
     handles.configfile=fullfile(handles.workspace_dir,'config.csv');
-    handles = create_configfile(handles, true)
-
+    handles = create_configfile(handles, true);
+    handles.workspace_dir = 0;
+    handles.mupet_root_dir = pwd;
 end
 
 
 % --- Executes during object creation, after setting all properties.
 function figure1_CreateFcn(hObject, eventdata, handles)
+handles.mupet_root_dir = pwd;
+handles.workspace_dir = 0;
 addpath(genpath('./utils'))
 addpath(genpath('./gui_setup'))
 addpath(genpath('./core'))
