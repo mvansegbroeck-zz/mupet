@@ -1,7 +1,14 @@
 % load_wavfiles
 function handles=load_wavfiles(handles)
-
     handles.datadir = uigetdir;
+    handles.workspace_dir = check_workspace_dir(handles);
+%     set(handles.workspaceDir,fullfile(handles.workspace_dir))
+    set(handles.workspaceDir,'string',fullfile(handles.workspace_dir));
+    handles.datasetdir = fullfile(handles.workspace_dir,'datasets');
+    refresh_datasets(handles);
+    handles.repertoiredir = fullfile(handles.workspace_dir,'repertoires');
+    refresh_repertoires(handles);
+    handles.configfile=fullfile(handles.workspace_dir,'config.csv');
     filelist1=dir(fullfile(handles.datadir,'*.WAV'));
     filelist2=dir(fullfile(handles.datadir,'*.wav'));
     crit = '^[^.]+';

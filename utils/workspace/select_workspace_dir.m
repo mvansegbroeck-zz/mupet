@@ -1,7 +1,7 @@
 % load_wavfiles
 function handles=select_workspace_dir(handles)
-
-    handles.workspace_dir = uigetdir;
+    handles.workspace_dir = uigetdir(matlabroot, 'Select Workspace Directory');
+    handles.workspace_dir = check_workspace_dir(handles);
 %     set(handles.workspaceDir,fullfile(handles.workspace_dir))
     set(handles.workspaceDir,'string',fullfile(handles.workspace_dir));
     handles.datasetdir = fullfile(handles.workspace_dir,'datasets');
@@ -30,5 +30,4 @@ function handles=select_workspace_dir(handles)
 %     set(handles.wav_directory,'string',handles.datadir);
 %     set(handles.wavList,'value',1);
 %     set(handles.wavList,'string',content);
-
 end
