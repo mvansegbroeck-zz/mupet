@@ -113,8 +113,15 @@ function handles=mupet_initialize(handles)
     handles.configdefault{4}=-15; % min_syllable_total_energy_default
     handles.configdefault{5}=-25; % min_syllable_peak_amplitude_default
     handles.configdefault{6}=5; % min_syllable_distance_default
+    handles.configdefault{7}=250000; % sample_frequency
+    handles.configdefault{8}=35000; % minimum_usv_frequency
+    handles.configdefault{9}=110000; % maximum_usv_frequency
+    handles.configdefault{10}=64; % number_filterbank_filters
+    handles.configdefault{11}=0; % filterbank_type, 0: non-linear, 1: linear
+    
     handles.configfile=fullfile(handles.workspace_dir,'config.csv');
     handles = create_configfile(handles, true);
+%     handles = load_configfile(handles);
     handles.workspace_dir = 0;
     handles.mupet_root_dir = pwd;
 end

@@ -21,7 +21,7 @@ grow_fac=floor(3*(0.0016/handles.frame_shift_ms));
 
 % frequency
 fsMin=90000;
-fs=250000;
+fs=handles.config{7};
 frame_shift=floor(handles.frame_shift_ms*fs);
 frame_win=floor(handles.frame_win_ms*fs);
 
@@ -40,11 +40,11 @@ if fsOrig ~= fs
 end
 
 % compute MUSV features
-fmin=35000;
-fmax=110000;
+fmin=handles.config{8};
+fmax=handles.config{9};
 Nmin=floor(Nfft/(fs/2)*fmin);
 Nmax=floor(Nfft/(fs/2)*fmax);
-[gt_sonogram, sonogram, E_low, E_usv, T]=FE_GT_spectra(audio_segment, fs, frame_win, frame_shift, Nfft, Nmin, Nmax);
+[gt_sonogram, sonogram, E_low, E_usv, T]=FE_GT_spectra(handles, audio_segment, fs, frame_win, frame_shift, Nfft, Nmin, Nmax);
 
 % Gaussian noise floor estimation by median
 logE = log(E_usv);
@@ -159,12 +159,16 @@ nb_of_syllables=size(syllable_data,2);
 end
 
 % FE_GT_spectra
-function [lp,Xf,E_low, E_usv,T]=FE_GT_spectra(sam,fs,FrameLen,FrameShift,Nfft,Nmin,Nmax,W,M)
+function [lp,Xf,E_low, E_usv,T]=FE_GT_spectra(handles, sam,fs,FrameLen,FrameShift,Nfft,Nmin,Nmax,W,M)
 
     GTfloor=1e-3;
 
     if ~exist('W', 'var')
-        W=gammatone_matrix_sigmoid(Nfft*2,fs);
+        if handles.config{11} == 0
+            W = gammatone_matrix_sigmoid(Nfft*2, fs, handles.config{10});
+        else
+            W = gammatone_matrix_linear(Nfft*2, fs, handles.config{10}, handles.config{8}, handles.config{9});
+        end
     end
     if ~exist('M', 'var')
         M=1;

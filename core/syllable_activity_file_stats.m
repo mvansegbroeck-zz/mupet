@@ -15,7 +15,8 @@ function [syllable_data, syllable_stats, filestats, fs] = syllable_activity_file
     end
 
     GTfloor=1e-1;
-    fs=250000;
+    %fs=250000;
+    fs=handles.config{7};
     frame_shift=floor(handles.frame_shift_ms*fs);
 
     % load values from config file

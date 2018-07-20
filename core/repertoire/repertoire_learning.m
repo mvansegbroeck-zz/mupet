@@ -19,7 +19,8 @@ function [bases, activations, bic, logL, syllable_similarity, syllable_correlati
     end
 
     NbPatternFrames=handles.patch_window;
-    fs=250000;
+    fs=handles.config{7};
+    %fs=250000;
     frame_shift=floor(handles.frame_shift_ms*fs);
     min_nb_of_syllables=handles.repertoire_learning_min_nb_syllables_fac*NbUnits;
 

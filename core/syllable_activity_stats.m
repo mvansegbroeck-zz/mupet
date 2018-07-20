@@ -4,7 +4,8 @@ function syllable_activity_stats(handles, wavefile_list, dataset_filename, Nfft)
     if ~exist('Nfft', 'var')
         Nfft=512;
     end
-    fs=250000;
+    %fs=250000;
+    fs=handles.config{7};
     frame_shift=floor(handles.frame_shift_ms*fs);
 
     gtdir=fullfile(handles.audiodir);

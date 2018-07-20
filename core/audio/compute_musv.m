@@ -11,7 +11,8 @@ function [syllable_data, syllable_stats, filestats, fs] = compute_musv(datadir,f
     % Gammatone filterbank
     NbChannels=64;
     fsMin=90000;
-    fs=250000;
+%     fs=250000;
+    fs=handles.config{7};
     frame_shift=floor(handles.frame_shift_ms*fs);
     frame_win=floor(handles.frame_win_ms*fs);
     gtdir=fullfile(handles.audiodir);

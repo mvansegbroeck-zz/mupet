@@ -4,7 +4,8 @@ function [syllables, fs, syllable_dur, syllable_distance, syllable_activity, syl
     if ~exist('Nfft', 'var')
         Nfft=512;
     end
-    fs=250000;
+    %fs=250000;
+    fs=handles.config{7};
     frame_shift=floor(handles.frame_shift_ms*fs);
 
     % Accumulate GT sonogram frames
