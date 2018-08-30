@@ -25,8 +25,16 @@ function [syllable_data, syllable_stats, filestats, fs] = syllable_activity_file
     max_syllable_duration=handles.config{3};
     min_syllable_total_energy=handles.config{4};
     min_syllable_peak_amplitude=handles.config{5};
+    filterbank_type=handles.config{11};
+    number_filterbank_filters=handles.config{10};
+    minimum_usv_frequency=handles.config{8};
+    maximum_usv_frequency=handles.config{9};
 
-    gtbands=gammatone_matrix_sigmoid(Nfft*2,fs);
+    if filterbank_type == 0
+        gtbands = gammatone_matrix_sigmoid(Nfft*2, fs, number_filterbank_filters);
+    else
+        gtbands = gammatone_matrix_linear(Nfft*2, fs, number_filterbank_filters, minimum_usv_frequency, maximum_usv_frequency);
+    end
     gt2fftbands=cell(size(gtbands,1),1);
     for k=1:size(gtbands,1)
         gt2fftbands{k}=find(gtbands(k,:)>0.15);

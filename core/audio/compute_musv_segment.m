@@ -163,11 +163,16 @@ function [lp,Xf,E_low, E_usv,T]=FE_GT_spectra(handles, sam,fs,FrameLen,FrameShif
 
     GTfloor=1e-3;
 
+    filterbank_type=handles.config{11};
+    number_filterbank_filters=handles.config{10};
+    minimum_usv_frequency=handles.config{8};
+    maximum_usv_frequency=handles.config{9};
+
     if ~exist('W', 'var')
-        if handles.config{11} == 0
-            W = gammatone_matrix_sigmoid(Nfft*2, fs, handles.config{10});
+        if filterbank_type == 0
+            W = gammatone_matrix_sigmoid(Nfft*2, fs, number_filterbank_filters);
         else
-            W = gammatone_matrix_linear(Nfft*2, fs, handles.config{10}, handles.config{8}, handles.config{9});
+            W = gammatone_matrix_linear(Nfft*2, fs, number_filterbank_filters, minimum_usv_frequency, maximum_usv_frequency);
         end
     end
     if ~exist('M', 'var')

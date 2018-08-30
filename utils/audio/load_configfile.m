@@ -45,8 +45,8 @@ function handles = load_configfile(handles)
             throw(ME);
         end
         handles.config{8} = vals(min_usv_frequency_ndx);
-        if (handles.config{8}>handles.config{7}/2) || (handles.config{8}<30000) || (handles.config{8}>handles.config{9}) || ((handles.config{9}-handles.config{8})<50000)
-            ME = MException('MyComponent:noSuchVariable','Verify min USV frequency.\n Make sure it is higher than 30kHz.\n');
+        if (handles.config{8}>handles.config{7}/2) || (handles.config{8}<20000) || (handles.config{8}>handles.config{9}) || ((handles.config{9}-handles.config{8})<50000)
+            ME = MException('MyComponent:noSuchVariable','Verify min USV frequency.\n Make sure it is higher than 20kHz.\n');
             throw(ME);
         end
         handles.config{9} = vals(max_usv_frequency_ndx);
@@ -55,8 +55,8 @@ function handles = load_configfile(handles)
             throw(ME);
         end
         handles.config{10} = vals(number_filterbank_filters_ndx);
-        if (handles.config{10}<32) || (handles.config{10}>128)
-            ME = MException('MyComponent:noSuchVariable','Verify number of filterbank filters parameter (min: 32, max: 128)');
+        if (handles.config{10}<32) || (handles.config{10}>256)
+            ME = MException('MyComponent:noSuchVariable','Verify number of filterbank filters parameter (min: 32, max: 256)');
             throw(ME);
         end
         handles.config{11} = vals(filterbank_type_ndx);
