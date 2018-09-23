@@ -68,13 +68,13 @@ function [syllable_data, syllable_stats, filestats, fs] = syllable_activity_file
     end
     fprintf('Updating stats of file %s.\n', filename);
 
-    % file stats
-    syllable_onset=cell2mat(syllable_data(5,:));
-    syllable_offset=cell2mat(syllable_data(6,:));
-
-    % start processing
+    % start processing - ignore unused/refined syllables
     syllable_data=syllable_data(:,syllable_use==1);
 
+    % compute time stamp information
+    syllable_onset=cell2mat(syllable_data(5,:));
+    syllable_offset=cell2mat(syllable_data(6,:));
+    
     nb_of_syllables=size(syllable_data,2);
     syllable_stats=cell(14,nb_of_syllables);
     ndx_remove=zeros(1,nb_of_syllables);

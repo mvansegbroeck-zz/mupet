@@ -53,6 +53,14 @@ end
 %%% UTILITY FUNCTIONS - MUPET INITIALIZATION
 
 function handles=mupet_initialize(handles)
+
+    disp('                             _           ____    ___  ');
+    disp('  _ __ ___  _   _ _ __   ___| |_  __   _|___ \  / _ \ ');
+    disp(' | |_ \ _ \| | | | |_ \ / _ \ __| \ \ / / __) || | | |');
+    disp(' | | | | | | |_| | |_) |  __/ |_   \ V / / __/ | |_| |');
+    disp(' |_| |_| |_|\__,_| .__/ \___|\__|   \_/ |_____(_)___/ ');
+    disp('                 |_|                                  ');
+
     %add 'utils' path
     addpath(genpath('./utils'))
     addpath(genpath('./gui_setup'))
@@ -86,7 +94,8 @@ function handles=mupet_initialize(handles)
     makeurl(handles.wiki,'https://github.com/mvansegbroeck/mupet/wiki/MUPET-wiki');
     makeurl(handles.code,'https://github.com/mvansegbroeck/mupet/');
     defaultFigPos=get(0,'DefaultFigurePosition');
-    set(0,'DefaultFigurePosition',[1 defaultFigPos(2) defaultFigPos(3) defaultFigPos(4)]);
+    defaultFigPos=get(0,'ScreenSize');
+    set(0,'DefaultFigurePosition',[1 defaultFigPos(2) defaultFigPos(3)/10 defaultFigPos(4)/10]);
     [handles.FontSize1, handles.FontSize2, handles.FontSize3, handles.FontSize4]=setGuiFonts(handles);
     set(handles.syllableSlider,'Visible','off');
     set(handles.syllable_axes_fft,'Visible','off');
@@ -124,6 +133,7 @@ function handles=mupet_initialize(handles)
 %     handles = load_configfile(handles);
     handles.workspace_dir = 0;
     handles.mupet_root_dir = pwd;
+    
 end
 
 
