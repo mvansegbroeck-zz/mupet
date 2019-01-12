@@ -93,9 +93,6 @@ function handles=mupet_initialize(handles)
     % user interface
     makeurl(handles.wiki,'https://github.com/mvansegbroeck/mupet/wiki/MUPET-wiki');
     makeurl(handles.code,'https://github.com/mvansegbroeck/mupet/');
-    defaultFigPos=get(0,'DefaultFigurePosition');
-    defaultFigPos=get(0,'ScreenSize');
-    set(0,'DefaultFigurePosition',[1 defaultFigPos(2) defaultFigPos(3)/10 defaultFigPos(4)/10]);
     [handles.FontSize1, handles.FontSize2, handles.FontSize3, handles.FontSize4]=setGuiFonts(handles);
     set(handles.syllableSlider,'Visible','off');
     set(handles.syllable_axes_fft,'Visible','off');
