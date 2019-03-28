@@ -21,8 +21,11 @@ function show_psd_curve(handles)
     set(guihandle, 'HandleVisibility', 'on');
     screenSize=get(0,'ScreenSize');
     defaultFigPos=get(0,'DefaultFigurePosition');
-    fskip=25000;
-    fstart=25000;
+    f_lower=handles.config{8}; %25000
+    f_upper=handles.config{9};
+    fskip=(f_upper-f_lower)/5; %25000
+%     f_lower = 25000;
+%     fskip = 25000;
     barcolors={[1 102/256 102/256], [1 153/256 153/256], [0.5 0.5 0.5], [102/256 153/256 1] ,[153/256 204/256 1]};
     ylabelstring='PSD (normalized, 1e-2)';
     textoffset=0.2;
@@ -39,10 +42,10 @@ function show_psd_curve(handles)
         end
 
         % FFT
-        fmax=fs/2;
-        nfftmax=fix(fmax*Nfft/(fs/2));
-        nfftstart=fix(fstart*Nfft/(fs/2));
-        nfftskip=fix(fskip*Nfft/(fs/2));
+%         f_upper=fs/2;
+        nfft_upper=fix(f_upper*Nfft/(fs/2));
+        nfft_lower=fix(f_lower*Nfft/(fs/2));
+        nfft_skip=fix(fskip*Nfft/(fs/2));
 
         % Gaussian fit line
         psdsum=sum(psdn);
@@ -57,8 +60,8 @@ function show_psd_curve(handles)
         plot(100*psdline,'LineWidth',2,'Color','k'); axis tight;
         ylim([0 1.5]);
         xlim([0 Nfft]);
-        set(gca,'XTick',[nfftstart:nfftskip:nfftmax]) % frequency
-        set(gca,'XTickLabel',fix([fstart:fskip:fmax]/1000),'FontName','Helvetica','FontSize',handles.FontSize1) % frequency
+        set(gca,'XTick',[nfft_lower:nfft_skip:nfft_upper]) % frequency
+        set(gca,'XTickLabel',fix([f_lower:fskip:f_upper]/1000),'FontName','Helvetica','FontSize',handles.FontSize1) % frequency
         set(gca,'YTick',[0:0.5:2.5]) % frequency
         xlabel('frequency (kHz)','FontSize',handles.FontSize1);
         ylabel(ylabelstring,'FontSize',handles.FontSize1);
@@ -74,7 +77,7 @@ function show_psd_curve(handles)
         line([muf*Nfft/(fs/2) muf*Nfft/(fs/2)],[0 100],'Color','r','LineStyle','--','LineWidth',1);
         axvals=axis;
         %text(axvals(2)/2,axvals(4)/2,{'MUPET version 1.0', '(unreleased)'},'Color',[0.9 0.9 0.9],'FontSize',handles.FontSize1+10,'HorizontalAlignment','center','Rotation',45);
-
+        
     end
 
 end

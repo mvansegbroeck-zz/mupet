@@ -19,6 +19,8 @@ function export_csv_dataset_stats(handles)
     if ~exist('Nfft', 'var')
        Nfft=512;
     end
+    
+    fs = handles.config{7};
 
     % figure
     set(guihandle, 'HandleVisibility', 'off');
@@ -56,6 +58,10 @@ function export_csv_dataset_stats(handles)
     csvfile=fullfile(csvdir,sprintf('datasets_USV_profile_stats.csv'));
     fid = fopen(csvfile,'wt');
     fwrite(fid, csv_header);
+
+    csv_header_psdn=sprintf('%s (kHz),%s\n', ...
+        'frequency', ...
+        'PSD (normalized)');
 
     for datasetID = 1:length(datasetNames)
 
@@ -138,6 +144,25 @@ function export_csv_dataset_stats(handles)
         dataset_stats.syllable_time, ...
         dataset_stats.recording_time);
         fwrite(fid, dataset_info);
+
+        % export PSD values
+        csvfile_psdn=fullfile(csvdir,sprintf('psd_stats_dataset_%s.csv', datasetnames{datasetID}));
+        fid_psd = fopen(csvfile_psdn,'wt');
+        fwrite(fid_psd, csv_header_psdn);
+        nfft_max = size(psdn,1);
+        khz=1;
+        nfft_skip=1000*khz*nfft_max/(fs/2);
+        % ensuring NFFT bins larger than requested frequency steps from 0
+        % to fs/2
+        while nfft_skip < 0
+            khz=khz+1;
+            nfft_skip=1000*khz*nfft_max/(fs/2);
+        end
+        for nfft_bin=nfft_skip:nfft_skip:nfft_max
+            fwrite(fid_psd,sprintf('%.1f, %.6f\n',fix(nfft_bin/nfft_skip)*khz,psdn(fix(nfft_bin))));
+        end
+        fclose(fid_psd);
+        
     end
 
     fclose(fid);
