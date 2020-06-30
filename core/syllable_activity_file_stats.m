@@ -63,7 +63,7 @@ function [syllable_data, syllable_stats, filestats, fs] = syllable_activity_file
         end
     else
         if isempty(syllable_use)
-            syllable_use=ones(1,length(syllable_data));
+            syllable_use=ones(1,size(syllable_data,2));
         end
     end
     fprintf('Updating stats of file %s.\n', filename);
